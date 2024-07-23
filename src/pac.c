@@ -590,3 +590,8 @@ pac_destroy(tsdn_t *tsdn, pac_t *pac) {
 		extent_destroy_wrapper(tsdn, pac, ehooks, edata);
 	}
 }
+
+void
+pac_dontdump_retain(tsdn_t *tsdn, pac_t *pac) {
+    ecache_dontdump(tsdn, &pac->ecache_retained);
+}

@@ -179,5 +179,6 @@ ssize_t pac_decay_ms_get(pac_t *pac, extent_state_t state);
 
 void pac_reset(tsdn_t *tsdn, pac_t *pac);
 void pac_destroy(tsdn_t *tsdn, pac_t *pac);
+void pac_dontdump_retain(tsdn_t *tsdn, pac_t *pac);
 
 #endif /* JEMALLOC_INTERNAL_PAC_H */

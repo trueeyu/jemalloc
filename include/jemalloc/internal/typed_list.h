@@ -50,6 +50,10 @@ list_type##_empty(list_type##_t *list) {				\
 static inline void							\
 list_type##_concat(list_type##_t *list_a, list_type##_t *list_b) {	\
 	ql_concat(&list_a->head, &list_b->head, linkage);		\
+}                                                                       \
+static inline el_type*                                                  \
+list_type##_next(list_type##_t *list, el_type *item) {                  \
+    return ql_next(&list->head, item, linkage) ;                        \
 }
 
 #endif /* JEMALLOC_INTERNAL_TYPED_LIST_H */

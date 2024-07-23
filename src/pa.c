@@ -112,6 +112,10 @@ pa_shard_destroy(tsdn_t *tsdn, pa_shard_t *shard) {
 	}
 }
 
+void pa_shard_dontdump_retain(tsdn_t *tsdn, pa_shard_t *shard) {
+    pac_dontdump_retain(tsdn, &shard->pac);
+}
+
 static pai_t *
 pa_get_pai(pa_shard_t *shard, edata_t *edata) {
 	return (edata_pai_get(edata) == EXTENT_PAI_PAC
