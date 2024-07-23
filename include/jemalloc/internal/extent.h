@@ -29,6 +29,7 @@ void ecache_dalloc(tsdn_t *tsdn, pac_t *pac, ehooks_t *ehooks,
     ecache_t *ecache, edata_t *edata);
 edata_t *ecache_evict(tsdn_t *tsdn, pac_t *pac, ehooks_t *ehooks,
     ecache_t *ecache, size_t npages_min);
+void ecache_dontdump(tsdn_t *tsdn, ecache_t *ecache);
 
 void extent_gdump_add(tsdn_t *tsdn, const edata_t *edata);
 void extent_record(tsdn_t *tsdn, pac_t *pac, ehooks_t *ehooks, ecache_t *ecache,

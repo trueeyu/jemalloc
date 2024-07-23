@@ -60,6 +60,7 @@ uint64_t arena_time_until_deferred(tsdn_t *tsdn, arena_t *arena);
 void arena_do_deferred_work(tsdn_t *tsdn, arena_t *arena);
 void arena_reset(tsd_t *tsd, arena_t *arena);
 void arena_destroy(tsd_t *tsd, arena_t *arena);
+void arena_dontdump(tsdn_t *tsdn, arena_t *arena);
 void arena_cache_bin_fill_small(tsdn_t *tsdn, arena_t *arena,
     cache_bin_t *cache_bin, cache_bin_info_t *cache_bin_info, szind_t binind,
     const unsigned nfill);

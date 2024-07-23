@@ -147,6 +147,21 @@ ecache_dalloc(tsdn_t *tsdn, pac_t *pac, ehooks_t *ehooks, ecache_t *ecache,
 	extent_record(tsdn, pac, ehooks, ecache, edata);
 }
 
+void
+ecache_dontdump(tsdn_t *tsdn, ecache_t *ecache) {
+    malloc_mutex_lock(tsdn, &ecache->mtx);
+
+    eset_t *eset = &ecache->eset;
+    edata_t *edata = edata_list_inactive_first(&eset->lru);
+
+    while (edata != NULL) {
+        pages_dontdump(edata_base_get(edata), edata_size_get(edata));
+        edata = edata_list_inactive_next(&eset->lru, edata);
+    }
+
+    malloc_mutex_unlock(tsdn, &ecache->mtx);
+}
+
 edata_t *
 ecache_evict(tsdn_t *tsdn, pac_t *pac, ehooks_t *ehooks,
     ecache_t *ecache, size_t npages_min) {

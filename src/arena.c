@@ -793,6 +793,12 @@ arena_prepare_base_deletion(tsd_t *tsd, base_t *base_to_destroy) {
 #undef ARENA_DESTROY_MAX_DELAYED_MTX
 
 void
+arena_dontdump(tsdn_t *tsdn, arena_t *arena)  {
+    pa_shard_dontdump_retain(tsdn, &arena->pa_shard);
+    // TODO: dontdump dirty or muzzy?
+}
+
+void
 arena_destroy(tsd_t *tsd, arena_t *arena) {
 	assert(base_ind_get(arena->base) >= narenas_auto);
 	assert(arena_nthreads_get(arena, false) == 0);

@@ -164,6 +164,7 @@ void pa_shard_reset(tsdn_t *tsdn, pa_shard_t *shard);
  * last step in destroying the shard.
  */
 void pa_shard_destroy(tsdn_t *tsdn, pa_shard_t *shard);
+void pa_shard_dontdump_retain(tsdn_t *tsdn, pa_shard_t *shard);
 
 /* Gets an edata for the given allocation. */
 edata_t *pa_alloc(tsdn_t *tsdn, pa_shard_t *shard, size_t size,
